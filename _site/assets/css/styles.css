@@ -1,0 +1,351 @@
+/* =========================================================
+   TOKENS
+   ========================================================= */
+
+:root {
+  --bg: #f8f8f6;
+  --text: #1c1c1a;
+  --muted: #6a6a64;
+  --link: #2e4c8a;
+  --border: #e3e3df;
+  --space: 1.6rem;
+  --max: 72ch;
+  font-size: 17px;
+}
+
+:root[data-theme="dark"] {
+  --bg: #1b1b1a;
+  --text: #f2f2f0;
+  --muted: #a2a29a;
+  --link: #9bb7ff;
+  --border: #333;
+}
+
+/* =========================================================
+   BASE ELEMENTS
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.65 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--space);
+  display: block;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+/* Site-wide default: no underline, inherit color */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.primary-nav {
+  display: flex;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+.primary-nav a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.primary-nav a:hover {
+  text-decoration: underline;
+}
+
+.primary-nav a.is-active {
+  text-decoration: underline;
+}
+
+.theme-toggle {
+  margin-left: auto;
+  background: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: calc(var(--space) * 2);
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 2rem 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin: 1.6rem 0 0.6rem;
+}
+
+p {
+  margin: 0.9rem 0;
+}
+
+/* =========================================================
+   SECTION HEADERS
+   ========================================================= */
+
+.section-head {
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+  color: var(--muted);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-head span {
+  font-weight: 500;
+}
+
+.section-head.no-border {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 1.5rem;
+}
+
+/* =========================================================
+   WORKS GRIDS & CARDS
+   ========================================================= */
+
+/* Remove underlines inside cards */
+.works-grid a,
+.grid-current a,
+.grid-earlier a,
+.card a {
+  text-decoration: none;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.card a {
+  color: inherit;
+  display: block;
+}
+
+.card a:hover .title {
+  text-decoration: underline; /* subtle cue */
+}
+
+.card figure {
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  background: #e9e9e6;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card .meta {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.card .title {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+.card .blurb {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* Grid layouts */
+.grid-current {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 680px) {
+  .grid-current {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid-earlier {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .grid-earlier {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid-earlier {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* =========================================================
+   WORK PAGE MEDIA
+   ========================================================= */
+
+.work-hero {
+  margin: 1rem 0;
+}
+
+.work-hero img,
+.work-hero iframe {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-list a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-list a:hover,
+.contact-list a:focus {
+  text-decoration-thickness: 2px;
+}
+
+/* =========================================================
+   MISC
+   ========================================================= */
+
+.article a {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  :root {
+    font-size: 16px;
+  }
+
+  .primary-nav {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* =========================================================
+  BLOCKQUOTE
+   ========================================================= */
+
+blockquote {
+  font-family: "Lora", serif;
+  font-style: italic;
+  color: var(--muted);
+  margin: 1.6rem 0;
+  line-height: 1.65;
+  padding-left: 0;        /* no indent */
+}
+
+blockquote strong,
+blockquote em {
+  color: var(--text);      /* emphasized words stand out slightly */
+}
+
+blockquote cite {
+  display: block;
+  font-style: normal;      /* author not italic */
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+blockquote.quote-mark::before {
+  content: "“";
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--border);
+  margin-right: 0.25rem;
+}

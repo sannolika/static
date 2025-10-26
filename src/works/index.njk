@@ -1,0 +1,36 @@
+---
+layout: layouts/page.njk
+title: "Works"
+---
+<div class="section-head no-border"><span>Current</span></div>
+<section class="grid-current" aria-label="Current works">
+  {% for w in collections.worksCurrent %}
+    <article class="card">
+      <a href="{{ w.url }}">
+        {% if w.data.thumb %}
+          <figure><img src="{{ w.data.thumb }}" alt="{{ w.data.thumb_alt or w.data.title }}" loading="lazy"></figure>
+        {% endif %}
+        <div class="meta">
+          <h2 class="title">{{ w.data.title }}</h2>
+          {% if w.data.summary %}<p class="blurb">{{ w.data.summary }}</p>{% endif %}
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</section>
+
+<div class="section-head"><span>Earlier work</span></div>
+<section class="grid-earlier" aria-label="Earlier works">
+  {% for w in collections.worksEarlier %}
+    <article class="card">
+      <a href="{{ w.url }}">
+        {% if w.data.thumb %}
+          <figure><img src="{{ w.data.thumb }}" alt="{{ w.data.thumb_alt or w.data.title }}" loading="lazy"></figure>
+        {% endif %}
+        <div class="meta">
+          <h3 class="title">{{ w.data.title }}</h3>
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</section>

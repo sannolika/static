@@ -1,0 +1,39 @@
+
+{% extends "layouts/base.njk" %}
+{% block content %}
+<article class="work">
+  <header>
+    <h1>{{ title }}</h1>
+    <p><strong>{{ year }}</strong>{% if medium %} · {{ medium }}{% endif %}</p>
+  </header>
+
+{% if video_platform and video_id %}
+  <div class="work-hero">
+    {% if video_platform == "youtube" %}
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video_id }}" title="{{ title }}" frameborder="0" allowfullscreen></iframe>
+    {% elif video_platform == "vimeo" %}
+      <iframe src="https://player.vimeo.com/video/{{ video_id }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    {% endif %}
+  </div>
+{% elif images and (images | length) %}
+  <figure class="work-hero">
+    <img src="{{ images[0] }}" alt="{{ images_alt or title }}">
+  </figure>
+{% endif %}
+
+
+  <div class="work-body">
+    {{ content | safe }}
+  </div>
+
+{% if related and (related | length) %}
+  <div class="section-head"><span>Connected projects</span></div>
+  <ul>
+    {% for slug in related %}
+      <li><a href="/works/{{ slug }}/">{{ slug | replace("-", " ") | title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+</article>
+{% endblock %}

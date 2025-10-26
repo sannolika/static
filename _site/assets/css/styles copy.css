@@ -1,0 +1,91 @@
+
+:root {
+  --bg: #1b1b1a;
+  --text: #f2f2f0;
+  --accent: #a2a29a;
+  --link: #9bb7ff;
+  --border: #333;
+  --gutter: 1.5rem;
+  --space: 1.5rem;
+  font-size: 17px; /* base for desktop */
+
+}
+
+
+
+@media (max-width: 800px) {
+  :root { font-size: 16px; } /* slightly smaller on phones */
+}
+
+
+
+
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 880px;
+  margin: auto;
+  padding: calc(var(--space) * 2) var(--space);
+}
+
+header, footer {
+  padding: var(--space);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem 0;
+}
+
+.home {
+  text-align: center;
+  padding-top: 4rem;
+}
+.home img {
+  max-width: 90%;
+  margin: 0 auto 2rem;
+}
+.home h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+
+
+section {
+  margin-bottom: calc(var(--space) * 2);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1 { font-size: 2rem; line-height: 1.2; margin-top: 2.5rem; }
+h2 { font-size: 1.4rem; margin-top: 2rem; }
+h3 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+p, li { font-size: 1rem; line-height: 1.6; margin-bottom: 1.2rem;font-family: 'Lora', serif; }
+
+q, blockquote, .quote {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  margin: 1.8rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+  color: var(--accent);
+  font-size: 1.05rem;
+  }
