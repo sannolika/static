@@ -29,22 +29,24 @@ eleventyConfig.addGlobalData("site", (data) => {
   };
 });
 
-  // Collections (works)
-  eleventyConfig.addCollection("worksAll", c =>
-    c.getFilteredByGlob("src/works/*.md").sort((a,b) => {
-      const ao = a.data.order ?? 999, bo = b.data.order ?? 999;
-      if (ao !== bo) return ao - bo;
-      const ay = a.data.year ?? 0, by = b.data.year ?? 0;
-      if (ay !== by) return by - ay;
-      return a.data.title.localeCompare(b.data.title);
-    })
-  );
-  eleventyConfig.addCollection("worksCurrent", c =>
-    c.getFilteredByGlob("src/works/*.md").filter(p => !!p.data.current)
-  );
-  eleventyConfig.addCollection("worksEarlier", c =>
-    c.getFilteredByGlob("src/works/*.md").filter(p => !p.data.current)
-  );
+ // All works (any .md/.njk under src/works/)
+eleventyConfig.addCollection("worksAll", (c) =>
+  c.getFilteredByGlob("src/works/**/*.{md,njk}")
+);
+
+// Current works: tag your pages with `tags: ["work", "current"]`
+eleventyConfig.addCollection("worksCurrent", (c) =>
+  c.getFilteredByGlob("src/works/**/*.{md,njk}")
+   .filter(w => (w.data.tags || []).includes("current"))
+   .sort((a,b) => (b.data.year || b.date) - (a.data.year || a.date))
+);
+
+// Earlier works: tagged "work" but NOT "current"
+eleventyConfig.addCollection("worksEarlier", (c) =>
+  c.getFilteredByGlob("src/works/**/*.{md,njk}")
+   .filter(w => (w.data.tags || []).includes("work") && !(w.data.tags || []).includes("current"))
+   .sort((a,b) => (b.data.year || b.date) - (a.data.year || a.date))
+);
 
   return {
     dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },

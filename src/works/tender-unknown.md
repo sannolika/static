@@ -2,8 +2,8 @@
 layout: layouts/work.njk
 title: "Tender Unknown"
 year: 2025
-medium: "Video installation; spatial sound"
-current: true
+media: "Video installation; spatial sound"
+tags: ["work", "current"]   # ← appears under “Current”
 thumb: "/assets/images/works/tender-unknown/thumb.jpg"
 thumb_alt: "Still from Tender Unknown"
 summary: "An installation mapping the edges of perception through simulated growth and erosion."

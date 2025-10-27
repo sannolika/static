@@ -3,7 +3,7 @@ layout: layouts/work.njk
 title: "Wilderness"
 year: 2025
 medium: "Video installation; spatial sound"
-current: true
+tags: ["work"]
 thumb: "/assets/images/works/tender-unknown/thumb.jpg"
 thumb_alt: "Still from Tender Unknown"
 summary: "An installation mapping the edges of perception through simulated growth and erosion."

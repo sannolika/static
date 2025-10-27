@@ -1,11 +1,18 @@
 {% extends "layouts/base.njk" %}
+
 {% block content %}
 <article class="article">
   <header class="article-head">
-    <h1>{{ title }}</h1>
-    <p class="byline"><time datetime="{{ date | date('yyyy-LL-dd') }}">{{ date | date('yyyy-LL-dd') }}</time></p>
+    <h1 id="top">{{ title }}</h1>
+    <p class="byline">
+      <time datetime="{{ page.date | date('yyyy-LL-dd') }}">{{ page.date | date('yyyy-LL-dd') }}</time>
+      {% if updated %} ·
+      <time datetime="{{ updated | date('yyyy-LL-dd') }}">Updated {{ updated | date('yyyy-LL-dd') }}</time>
+      {% endif %}
+    </p>
     {% if description %}<p class="dek">{{ description }}</p>{% endif %}
   </header>
+
   <div class="article-body">
     {{ content | safe }}
   </div>
