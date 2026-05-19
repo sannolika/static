@@ -3,42 +3,48 @@ layout: layouts/page.njk
 title: "Works"
 ---
 
-
 <section class="container--wide">
-<div class="section-head no-border"><span>Current</span></div>
-  <div class="grid-current" aria-label="Current works">
-  {% for w in collections.worksCurrent %}
-   <article class="card">
-  <a href="{{ w.url }}" aria-label="{{ w.data.title }}">
-    <figure>
-      <img src="{{ w.data.thumb }}" alt="{{ w.data.thumb_alt or w.data.title }}" loading="lazy">
-      <span class="overlay">{{ w.data.title }}</span>
-    </figure>
-    <div class="meta">
-      <h2 class="title">{{ w.data.title }}</h2>
-    </div>
-  </a>
-</article>
+  <div class="section-head no-border"><span>Current</span></div>
 
-  {% endfor %}
-</div>
+  <div class="grid-current" aria-label="Current works">
+{% for w in collections.worksCurrent %}
+  <article class="card">
+    <a href="{{ w.url }}" aria-label="{{ w.data.title }}">
+      <figure>
+        <img src="{{ w.data.thumb }}"
+             alt="{{ w.data.thumb_alt or w.data.title }}"
+             loading="lazy">
+        <span class="overlay">{{ w.data.title }}</span>
+      </figure>
+      <div class="meta">
+        <h2 class="title">{{ w.data.title }}</h2>
+      </div>
+    </a>
+  </article>
+{% endfor %}
+
+  </div>
 </section>
 
-
 <section class="container--wide">
-<div class="section-head no-border"><span>Earlier work</span></div>
+  <div class="section-head no-border"><span>Earlier work</span></div>
+
   <div class="grid-earlier" aria-label="Earlier works">
-  {% for w in collections.worksEarlier %}
-    <article class="card">
-      <a href="{{ w.url }}">
-        {% if w.data.thumb %}
-          <figure><img src="{{ w.data.thumb }}" alt="{{ w.data.thumb_alt or w.data.title }}" loading="lazy"></figure>
-        {% endif %}
-        <div class="meta">
-          <h3 class="title">{{ w.data.title }}</h3>
-        </div>
-      </a>
-    </article>
-  {% endfor %}
-</div>
+ {% for w in collections.worksEarlier %}
+  <article class="card">
+    <a href="{{ w.url }}" aria-label="{{ w.data.title }}">
+      <figure>
+        <img src="{{ w.data.thumb }}"
+             alt="{{ w.data.thumb_alt or w.data.title }}"
+             loading="lazy">
+        <span class="overlay">{{ w.data.title }}</span>
+      </figure>
+      <div class="meta">
+        <h3 class="title">{{ w.data.title }}</h3>
+      </div>
+    </a>
+  </article>
+{% endfor %}
+
+  </div>
 </section>

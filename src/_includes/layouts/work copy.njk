@@ -1,7 +1,8 @@
----
-layout: layouts/base.njk
----
+{% extends "layouts/base.njk" %}
 
+LAYOUT TEST: work.njk 🐚
+
+{% block content %}
 <article class="work">
 
   {# HEADER / META #}
@@ -91,3 +92,4 @@ layout: layouts/base.njk
   {% endif %}
 
 </article>
+{% endblock %}
